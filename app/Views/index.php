@@ -19,7 +19,7 @@
             <hr>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <a href="/news/delete/<?= $new['id'] ?>" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Visualizar" onclick="return confirm()">
+                <a href="/news/viewDetail/<?= $new['id'] ?>" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Visualizar" onclick="return confirm()">
                   <i class="fas fa-eye"></i>
                 </a>
                 <a href="/news/edit/<?= $new['id'] ?>" class="btn btn-sm btn-success" ata-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
