@@ -20,6 +20,13 @@ class NewsController extends BaseController
         ]);
     }
 
+    public function viewDetail(){
+        $id = $this->request->uri->getSegment(3);
+        return view('view_detail_news', [
+            'new' => $this->news_model->find($id)
+        ]);
+    }
+
     public function create(){
         return view('create_news');
     }
@@ -65,6 +72,7 @@ class NewsController extends BaseController
             return redirect()->to(base_url('/news/edit/'.$id))->withInput()->with('errors', $errors);
         }
 
+
         $this->news_model->update($id, [
             'title' => $this->request->getPost('title'),
             'author' => $this->request->getPost('author'),
@@ -82,6 +90,22 @@ class NewsController extends BaseController
             'title' => 'required|min_length[3]|max_length[255]',
             'author' => 'required|min_length[3]|max_length[255]',
             'content' => 'required|min_length[3]|max_length[255]'
+        ],[
+            'title' => [
+                'required' => 'O campo título é obrigatório',
+                'min_length' => 'O campo título deve ter no mínimo 3 caracteres',
+                'max_length' => 'O campo título deve ter no máximo 255 caracteres'
+            ],
+            'author' => [
+                'required' => 'O campo autor é obrigatório',
+                'min_length' => 'O campo autor deve ter no mínimo 3 caracteres',
+                'max_length' => 'O campo autor deve ter no máximo 255 caracteres'
+            ],
+            'content' => [
+                'required' => 'O campo conteúdo é obrigatório',
+                'min_length' => 'O campo conteúdo deve ter no mínimo 3 caracteres',
+                'max_length' => 'O campo conteúdo deve ter no máximo 255 caracteres'
+            ]
         ]);
 
         $validation->withRequest($this->request)->run();
