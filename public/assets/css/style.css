@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+ul.pagination li {
+  display: inline;
+}
+
+ul.pagination li a {
+  color: black;
+  float: left;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #198754;
+  color: white;
+}
+
+ul.pagination li a:hover:not(.active) {
+  background-color: #ddd;
+  color: black;
+}
+
+.bg-light {
+  background-color: #ddd !important;
+}
