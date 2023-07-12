@@ -10,11 +10,13 @@ $routes = Services::routes();
  * Router Setup
  * --------------------------------------------------------------------
  */
+
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultController('NewsController');
+$routes->setDefaultMethod('/news');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -29,7 +31,15 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+
+$routes->group('news', function($routes) {
+    $routes->get('', 'NewsController::index');
+    $routes->get('create/', 'NewsController::create');
+    $routes->get('delete/(:num)', 'NewsController::delete/$1');
+    $routes->get('edit/(:num)', 'NewsController::edit/$1');
+    $routes->post('store/', 'NewsController::store');
+    $routes->post('update/(:num)', 'NewsController::update/$1');
+});
 
 /*
  * --------------------------------------------------------------------
