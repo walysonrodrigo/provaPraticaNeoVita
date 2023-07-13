@@ -62,7 +62,7 @@ class NewsController extends BaseController
             'publication_date' => date('Y-m-d')
         ]);
 
-        return redirect()->to(base_url('news'))->with('success', "Operação realizada com sucesso!");;
+        return redirect()->back()->with('success', "Operação realizada com sucesso!");
     }
 
     public function update(){
