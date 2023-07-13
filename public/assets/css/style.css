@@ -29,13 +29,6 @@ ul.pagination li a:hover:not(.active) {
   background-color: #ddd !important;
 }
 
-.ajustText {
-  white-space: nowrap; 
-  width: auto;
-  overflow: hidden;
-  text-overflow: clip; 
-}
-
 .card-shadow {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }

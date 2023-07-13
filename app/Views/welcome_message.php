@@ -249,7 +249,7 @@
 
     <div class="heroe">
 
-        <h1>Bem-vindo</h1>
+        <h1>Bem-vindo(a)</h1>
 
     </div>
 

@@ -21,8 +21,8 @@
         <div class="card card-shadow">
           <img class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="Placeholder: Thumbnail" src="<?=base_url()?>assets/img-card.svg" alt="">
           <div class="card-body">
-            <h5 class="text-center ajustText"><?= $new['title'] ? $new['title'] : "titulo"?></h5>
-            <p class="card-text ajustText"><?= $new['content'] ? $new['content'] : "descrição" ?></p>
+            <h5 class="text-center text-truncate"><?= $new['title'] ? $new['title'] : "titulo"?></h5>
+            <p class="card-text text-truncate"><?= $new['content'] ? $new['content'] : "descrição" ?></p>
             <hr>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
