@@ -1,54 +1,81 @@
-# CodeIgniter 4 Framework
+# DeoVita
 
-## What is CodeIgniter?
+Aplicação desenvolvida com o framework CodeIgniter (versão 4.3).
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Requisitos
+- PHP 8 ou superior
+- PostgreeSQL
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Instalação
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Para utilizar o projeto realize os seguintes passos:
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+Abra seu terminal de comandos e vá para uma pasta que queira que o projeto seja instalado. Nesse momento cole no terminal o seguinte comando:
 
-## Important Change with index.php
+```bash
+[git clone https://github.com/walysonrodrigo/provaPraticaNeoVita.git]
+```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Será criada uma pasta que conterá os arquivos do projeto. Entre nessa pasta. Para realizar essa ação você pode colar esse comando em seu terminal:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+```bash
+cd provaPraticaNeoVita
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## PostGreSQL
+- Faça o download e a instalação do PostgreSQL: Visite o site oficial do PostgreSQL (https://www.postgresql.org/) e baixe a versão adequada para o seu sistema operacional. Siga as instruções de instalação fornecidas pelo instalador.
+- Configure o PostgreSQL: Durante a instalação, você será solicitado a fornecer uma senha para o usuário administrador "postgres". Anote essa senha, pois você precisará dela para acessar o banco de dados.
+- Inicie o servidor PostgreSQL: Após a instalação, o servidor PostgreSQL será iniciado automaticamente. Em alguns sistemas operacionais, ele também será configurado para iniciar automaticamente sempre que você reiniciar o computador.
+- Acesse o banco de dados: Agora você pode acessar o banco de dados usando uma ferramenta cliente, como o pgAdmin (https://www.pgadmin.org/) ou a linha de comando através do utilitário psql. Para usar o psql, abra o terminal e digite o seguinte comando:
+```bash
+psql -U postgres
+```
+- Será solicitada a senha do usuário "postgres" que você definiu durante a instalação. Após inserir a senha correta, você estará conectado ao banco de dados.
+- Crie um banco de dados: Agora você pode criar um banco de dados para o seu aplicativo de gerenciamento de notícias. No psql, execute o seguinte comando para criar um banco de dados chamado "gerenciamento_noticias":
+```bash
+CREATE DATABASE gerenciamento_noticias;
+```
+- Com essas etapas concluídas, você terá o PostgreSQL configurado e pronto para ser usado como banco de dados para o seu aplicativo de gerenciamento de notícias. Certifique-se de ler a documentação do PostgreSQL para obter mais informações sobre configuração avançada, segurança e outras funcionalidades oferecidas pelo sistema de gerenciamento de banco de dados.
 
-## Repository Management
+Agora configure o arquivo .env com as informações do seu banco de dados. Lembre-se de antes criar uma tabela no seu banco!
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+```bash
+database.default.hostname = localhost
+database.default.database = seu_bd
+database.default.username = postgres
+database.default.password = sua_senha
+database.default.DBDriver = Postgre
+database.default.port = 5432
+```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Com tudo configurado você pode rodar o comando a seguir para que as migrations do projeto criem seu banco de dados. 
 
-## Contributing
+OBS: Verifque se extensão intl do PHP está ativada.
 
-We welcome contributions from the community.
+```bash
+php spark migrate
+```
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+Pronto, agora é só rodar o projeto!
 
-## Server Requirements
+```bash
+php spark serve
+```
 
-PHP version 7.4 or higher is required, with the following extensions installed:
+## Rotas
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+```
+ GROUP: NEWS
+ URL                 AÇÃO
+/news               | Lista todas as notícias
+/viewDetail/(:num)  | Visualizar
+/create             | Cadastro
+/store              | Persiste o cadastro no banco
+/update/(:num)      | Persiste a atualização no banco
+/delete/(:num)      | Deleta Tarefa
+/edit/(:num)        | Edita
+```
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## O que fazer no sistema?
 
-- json (enabled by default - don't turn it off)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-- [postgresql](https://www.postgresql.org/download/) if you plan to use MySQL
+O projeto consiste em criar um aplicativo de gerenciamento de notícias usando PHP e PostgreSQL. O aplicativo permitirá que os usuários criem, visualizem, atualizem e excluam notícias. Cada notícia terá campos como título, conteúdo, autor e data de publicação.
