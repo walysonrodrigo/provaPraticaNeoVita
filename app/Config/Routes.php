@@ -35,10 +35,10 @@ $routes->get('/', 'Home::index');
 
 $routes->group('news', function($routes) {
     $routes->get('', 'NewsController::index');
+    $routes->get('viewDetail/(:num)', 'NewsController::viewDetail/$1');
     $routes->get('create/', 'NewsController::create');
     $routes->get('delete/(:num)', 'NewsController::delete/$1');
     $routes->get('edit/(:num)', 'NewsController::edit/$1');
-    $routes->get('viewDetail/(:num)', 'NewsController::viewDetail/$1');
     $routes->post('store/', 'NewsController::store');
     $routes->post('update/(:num)', 'NewsController::update/$1');
 });
