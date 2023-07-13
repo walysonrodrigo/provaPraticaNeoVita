@@ -1,4 +1,4 @@
-# DeoVita
+# NeoVita
 
 Aplicação desenvolvida com o framework CodeIgniter (versão 4.3).
 
