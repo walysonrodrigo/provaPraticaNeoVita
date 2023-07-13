@@ -49,7 +49,8 @@ class NewsController extends BaseController
         $errors = $this->validation();
 
         if ($errors) {
-            return redirect()->to(base_url('/news/create/'))->withInput()->with('errors', $errors);
+            return redirect()->back()->withInput()->with('status', $errors);
+            //return redirect()->to(base_url('/news/create/'))->withInput()->with('status', $errors);
         }
 
         $this->news_model->save([
@@ -59,7 +60,7 @@ class NewsController extends BaseController
             'publication_date' => date('Y-m-d')
         ]);
 
-        return redirect()->to(base_url('news'));
+        return redirect()->to(base_url('news'))->with('success', "Operação realizada com sucesso!");;
     }
 
     public function update(){
@@ -67,9 +68,11 @@ class NewsController extends BaseController
         $id = $this->request->uri->getSegment(3);
         
         $errors = $this->validation();
-        
+
         if ($errors) {
-            return redirect()->to(base_url('/news/edit/'.$id))->withInput()->with('errors', $errors);
+            //return para a página de edição com os erros
+            return redirect()->back()->withInput()->with('status', $errors);
+            //return redirect()->to(base_url('/news/edit/'.$id))->withInput()->with('status', $errors);
         }
 
 
@@ -80,7 +83,7 @@ class NewsController extends BaseController
             'publication_date' => date('Y-m-d')
         ]);
 
-        return redirect()->to(base_url('news'));
+        return redirect()->back()->with('success', "Operação realizada com sucesso!");;
     }
 
     function validation () {

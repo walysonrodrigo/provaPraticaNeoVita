@@ -23,6 +23,22 @@
               <h6 class="form-label" for="content">Conteúdo</h6>
               <textarea name="content" id="content" maxLength = "250" class="form-control"><?= $new['content'] ?></textarea>
             </div>
+            <?php
+              if(session()->getFlashdata('status')) {
+                foreach (session()->getFlashdata('status') as $error) {
+                  echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">';
+                  echo  $error;
+                  echo  '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                  echo '</div>';
+                }
+              }
+              if(session()->getFlashdata('success')) {
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                echo  session()->getFlashdata('success');
+                echo  '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo '</div>';
+              }
+            ?>
             <input type="submit" class="btn btn-primary mt-2 card-link" value="Editar"></button>
             <a href="/news/" class="btn btn-secondary mt-2 card-link"> Voltar</a>
           </div>
