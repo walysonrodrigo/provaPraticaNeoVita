@@ -13,7 +13,7 @@ Para utilizar o projeto realize os seguintes passos:
 Abra seu terminal de comandos e vá para uma pasta que queira que o projeto seja instalado. Nesse momento cole no terminal o seguinte comando:
 
 ```bash
-[git clone https://github.com/walysonrodrigo/provaPraticaNeoVita.git]
+git clone https://github.com/walysonrodrigo/provaPraticaNeoVita.git
 ```
 
 Será criada uma pasta que conterá os arquivos do projeto. Entre nessa pasta. Para realizar essa ação você pode colar esse comando em seu terminal:
@@ -27,14 +27,17 @@ cd provaPraticaNeoVita
 - Configure o PostgreSQL: Durante a instalação, você será solicitado a fornecer uma senha para o usuário administrador "postgres". Anote essa senha, pois você precisará dela para acessar o banco de dados.
 - Inicie o servidor PostgreSQL: Após a instalação, o servidor PostgreSQL será iniciado automaticamente. Em alguns sistemas operacionais, ele também será configurado para iniciar automaticamente sempre que você reiniciar o computador.
 - Acesse o banco de dados: Agora você pode acessar o banco de dados usando uma ferramenta cliente, como o pgAdmin (https://www.pgadmin.org/) ou a linha de comando através do utilitário psql. Para usar o psql, abra o terminal e digite o seguinte comando:
+
 ```bash
-psql -U postgres
+psql -U [nome do banco de dados]
 ```
+
 - Será solicitada a senha do usuário "postgres" que você definiu durante a instalação. Após inserir a senha correta, você estará conectado ao banco de dados.
 - Crie um banco de dados: Agora você pode criar um banco de dados para o seu aplicativo de gerenciamento de notícias. No psql, execute o seguinte comando para criar um banco de dados chamado "gerenciamento_noticias":
 ```bash
 CREATE DATABASE gerenciamento_noticias;
 ```
+
 - Com essas etapas concluídas, você terá o PostgreSQL configurado e pronto para ser usado como banco de dados para o seu aplicativo de gerenciamento de notícias. Certifique-se de ler a documentação do PostgreSQL para obter mais informações sobre configuração avançada, segurança e outras funcionalidades oferecidas pelo sistema de gerenciamento de banco de dados.
 
 Agora configure o arquivo .env com as informações do seu banco de dados. Lembre-se de antes criar uma tabela no seu banco!
@@ -50,7 +53,7 @@ database.default.port = 5432
 
 Com tudo configurado você pode rodar o comando a seguir para que as migrations do projeto criem seu banco de dados. 
 
-OBS: Verifique se extensão intl do PHP está ativada.
+OBS: Verifique se extensão intl, pgsql, pdo_pgsql do PHP está ativada. As extensões do PHP podem ser modificadas através do arquivo PHP.ini
 
 ```bash
 php spark migrate
@@ -59,7 +62,7 @@ php spark migrate
 Para uma melhor experiência, foi criado um arquivo seed onde você pode passar a quantidade de registros desejados como parâmetro. Isso permite que você controle facilmente a quantidade de dados que deseja popular no banco de dados.
 
 ```bash
-spark db:seed NewsSeeder
+php spark db:seed NewsSeeder
 ```
 
 Pronto, agora é só rodar o projeto!
