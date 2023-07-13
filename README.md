@@ -50,10 +50,16 @@ database.default.port = 5432
 
 Com tudo configurado você pode rodar o comando a seguir para que as migrations do projeto criem seu banco de dados. 
 
-OBS: Verifque se extensão intl do PHP está ativada.
+OBS: Verifique se extensão intl do PHP está ativada.
 
 ```bash
 php spark migrate
+```
+
+Para uma melhor experiência, foi criado um arquivo seed onde você pode passar a quantidade de registros desejados como parâmetro. Isso permite que você controle facilmente a quantidade de dados que deseja popular no banco de dados.
+
+```bash
+spark db:seed NewsSeeder
 ```
 
 Pronto, agora é só rodar o projeto!
