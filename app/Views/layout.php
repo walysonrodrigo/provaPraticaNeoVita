@@ -15,15 +15,5 @@
       <?= $this->renderSection('content') ?>
     </div>
     <script src="https://kit.fontawesome.com/4c493bab28.js" crossorigin="anonymous"></script>
-    <script>
-      function confirm() {
-
-        if (!confirm("Deseja realmente excluir?")) {
-          return false;
-        }
-
-        return true;
-      }
-    </script>
   </body>
 </html>

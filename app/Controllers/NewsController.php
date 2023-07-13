@@ -23,12 +23,13 @@ class NewsController extends BaseController
     public function viewDetail(){
         $id = $this->request->uri->getSegment(3);
         return view('view_detail_news', [
-            'new' => $this->news_model->find($id)
+            'new' => $this->news_model->find($id),
+            'rout' => 'viewDetail'
         ]);
     }
 
     public function create(){
-        return view('create_news');
+        return view('create_news',['rout' => 'store']);
     }
 
     public function delete(){
@@ -40,7 +41,8 @@ class NewsController extends BaseController
     public function edit(){
         $id = $this->request->uri->getSegment(3);
         return view('edit_news', [
-            'new' => $this->news_model->find($id)
+            'new' => $this->news_model->find($id),
+            'rout' => 'update'
         ]);
     }
 
@@ -64,15 +66,12 @@ class NewsController extends BaseController
     }
 
     public function update(){
-        
         $id = $this->request->uri->getSegment(3);
         
         $errors = $this->validation();
 
         if ($errors) {
-            //return para a página de edição com os erros
             return redirect()->back()->withInput()->with('status', $errors);
-            //return redirect()->to(base_url('/news/edit/'.$id))->withInput()->with('status', $errors);
         }
 
 
