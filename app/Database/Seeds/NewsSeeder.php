@@ -18,7 +18,7 @@ class NewsSeeder extends Seeder
 
         $data = [];
         $authorCount = count($authors);
-        $newsCount = 50;
+        $newsCount = 6;
 
         for ($i = 1; $i <= $newsCount; $i++) {
             $authorIndex = ($i - 1) % $authorCount;
