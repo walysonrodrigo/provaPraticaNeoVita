@@ -1,6 +1,6 @@
-# DIMENDES
+# DeoVita
 
-Aplicação desenvolvida com o framework Laravel (versão 9).
+Aplicação desenvolvida com o framework CodeIgniter (versão 4.3).
 
 ## Requisitos
 - PHP 8 ou superior
