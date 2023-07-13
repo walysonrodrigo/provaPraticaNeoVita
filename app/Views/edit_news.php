@@ -7,5 +7,5 @@
   </div>
 <?= $this->endSection() ?>
 <?= $this->section('inputPage') ?>
-  <button type="submit" class="btn btn-primary mt-2 card-link"><i class="fas fa-edit"></i> Editar</button>
+  <button type="submit" class="btn btn-primary mt-2 card-link"><i class="fas fa-edit"></i> Salvar</button>
 <?= $this->endSection() ?>
