@@ -12,8 +12,8 @@ $routes = Services::routes();
  */
 
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('NewsController');
-$routes->setDefaultMethod('/news');
+$routes->setDefaultController('Home');
+$routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 
@@ -31,12 +31,14 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('/', 'Home::index');
 
 $routes->group('news', function($routes) {
     $routes->get('', 'NewsController::index');
     $routes->get('create/', 'NewsController::create');
     $routes->get('delete/(:num)', 'NewsController::delete/$1');
     $routes->get('edit/(:num)', 'NewsController::edit/$1');
+    $routes->get('viewDetail/(:num)', 'NewsController::viewDetail/$1');
     $routes->post('store/', 'NewsController::store');
     $routes->post('update/(:num)', 'NewsController::update/$1');
 });
