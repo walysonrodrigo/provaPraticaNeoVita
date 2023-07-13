@@ -7,9 +7,9 @@
     echo form_open('news/'.$rout.$id)
   ?>
   <?= $this->renderSection('titlePage');?>
-    <div class="row">
-      <div class="col">
-        <div class="card">
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+        <div class="card card-shadow">
           <div class="card-body">
             <?php
               if(session()->getFlashdata('status')) {
@@ -37,10 +37,11 @@
             </div>
             <div class="form-group mb-1">
               <h6 class="form-label" for="content">Conteúdo</h6>
-              <textarea name="content" id="content" maxLength = "250" class="form-control"><?= isset($new['content']) ? $new['content'] : ''?></textarea>
+              <textarea name="content" id="content" maxLength = "250" class="form-control" rows="6"><?= isset($new['content']) ? $new['content'] : ''?></textarea>
             </div>
+            <hr>
+            <a href="/news/" class="btn btn-secondary mt-2 card-link"><i class="fas fa-arrow-left"></i></a>
             <?= $this->renderSection('inputPage') ?>
-            <a href="/news/" class="btn btn-secondary mt-2 card-link"> Voltar</a>
           </div>
         </div>
       </div>
